@@ -33,7 +33,8 @@ jobs:
 
       - name: Instalar butler
         run: |
-          curl -sL -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+          curl -fSL --retry 5 --retry-all-errors --retry-delay 3 \
+            -o butler.zip "https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default"
           unzip -q butler.zip
           chmod +x butler
           ./butler -V
